@@ -20,24 +20,6 @@ function App() {
   }
 
   return (
-<<<<<<< HEAD
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Kanchan KK
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-=======
     <React.Fragment>
       {/* Header Component */}
       <Grid container direction="row" alignItems="center">
@@ -73,7 +55,6 @@ function App() {
         <Oxygen />
       </SwipeableViews>
     </React.Fragment>
->>>>>>> 8701de79489051a1f474430a46aa6b6ae1eb5cd9
   );
 }
 
