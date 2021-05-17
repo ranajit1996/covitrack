@@ -1,0 +1,1 @@
+All the image or other kind of assets will reside under this folder

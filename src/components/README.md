@@ -1,0 +1,1 @@
+All the React components will reside under this folder
