@@ -1,4 +1,4 @@
-import Logo from './assets/coronavirus.svg'
+import Logo from './assets/coviTracker_LOW.png'
 import './App.css'
 import { Grid, Tab, Tabs } from '@material-ui/core'
 import React, { useState } from 'react'
@@ -27,10 +27,7 @@ function App() {
         {/* Logo */}
         <Grid style={{ display: 'flex', justifyContent: "center" }} item xs={12} md={3}>
           <div>
-            <img className="logoImage" src={Logo} alt="Logo" />
-          </div>
-          <div>
-            <h1 className="logoText">COVITRACK</h1>
+            <img className="logoImage" src={Logo} alt="Logo"/>
           </div>
         </Grid>
 

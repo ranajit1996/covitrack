@@ -1,6 +1,5 @@
 body{
     padding: 16px;
-    background-color: beige;
 }
 
 .header{
@@ -8,11 +7,5 @@ body{
 }
 
 .logoImage{
-    width: 70px;
-    height: 100%;
-}
-
-.logoText{
-    margin-left: 16px;
-    font-family: 'Audiowide', cursive;
+    width: 250px;
 }
