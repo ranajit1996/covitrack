@@ -3,7 +3,6 @@ import ReactApexChart from 'react-apexcharts'
 
 const CustomChart = ({ data, datelabels, title, pathColor, backgroundColor }) => {
     const state = {
-
         series: [{
             name: title,
             data: data
@@ -42,8 +41,6 @@ const CustomChart = ({ data, datelabels, title, pathColor, backgroundColor }) =>
             },
         },
     }
-
-
 
     return (
         <ReactApexChart options={state.options} series={state.series} type="line" height={300} width={600} />

@@ -18,11 +18,14 @@ function India() {
     const [data, setData] = useState(undefined)
     const [stateData, setStateData] = useState(undefined)
     const [chartData, setChartData] = useState(undefined)
+
+    // Card dimens
     const cardWidth = 140
     const cardHeight = 100
 
     const chartDataMonths = 1   // Number of months to show data in charts
 
+    // Data table config
     const tableColumnWidth = 150
     const columnInfo = [
         { field: 'state', headerName: 'State', width: tableColumnWidth + 70 },
@@ -33,6 +36,7 @@ function India() {
         { field: 'lastUpdatedTime', headerName: 'Last Updated Time', width: tableColumnWidth + 50, sortable: false },
     ]
 
+    // Fetch api data
     useEffect(() => {
         axios.get("https://api.covid19india.org/data.json")
             .then((response) => {
@@ -53,6 +57,7 @@ function India() {
             })
     }, [])
 
+    // Prepare data for Charts
     const prepareChartData = (data) => {
         let confirmed = []
         let recovered = []
@@ -79,6 +84,7 @@ function India() {
         console.log("chart data prepared...")
     }
 
+    // Prepare State wise data for Data Table
     const prepareStatwiseData = (data) => {
         let sData = []
         data.forEach((obj, index) => {
@@ -101,9 +107,10 @@ function India() {
 
     return (
         <div style={{ textAlign: 'center', marginTop: '16px', overflow: 'auto' }}>
-
             <Grid container direction="row">
+                {/* Column 1: Numbers and Data Table */}
                 <Grid container direction="column" alignItems="center" xs={12} lg={6}>
+                    {/* Number Cards */}
                     <Grid container direction="row" justify="center">
                         {/* Confirmed */}
                         <Grid item className={styles.card}>
@@ -162,11 +169,15 @@ function India() {
                             />}
                         </Grid>
                     </Grid>
+
+                    {/* Last Upated Time Caption */}
                     <Grid item>
                         {(data !== undefined) && <Typography variant="caption">
                             {`Last updated on ${data["lastupdatedtime"].split(" ")[0]} at ${data["lastupdatedtime"].split(" ")[1]}`}
                         </Typography>}
                     </Grid>
+
+                    {/* Statewise Data */}
                     <Grid item style={{ marginTop: 30, width: '100%' }}>
                         {(stateData !== undefined) && <div style={{ height: 750 }}>
                             <DataGrid rows={stateData} columns={columnInfo} />
@@ -174,21 +185,24 @@ function India() {
                     </Grid>
                 </Grid>
 
+                {/* Column 2: Charts */}
                 {(chartData !== undefined) && <Grid container direction="column" alignItems="center" style={{ overflow: 'hidden' }} xs={12} lg={6}>
+                    {/* Confirmed Cases Chart */}
                     <Grid item>
                         <CustomChart data={chartData["confirmed"]} datelabels={chartData["dates"]} title="Confirmed Cases" pathColor="#ff053a" backgroundColor="#ffdfe6" />
                     </Grid>
+
+                    {/* Recovered Cases Chart */}
                     <Grid item>
                         <CustomChart data={chartData["recovered"]} datelabels={chartData["dates"]} title="Recovered Cases" pathColor="#2ca847" backgroundColor="#e4f4e7" />
                     </Grid>
+
+                    {/* Deceased Cases Chart */}
                     <Grid item>
                         <CustomChart data={chartData["deceased"]} datelabels={chartData["dates"]} title="Deceased Cases" pathColor="#6c757d" backgroundColor="#f6f6f7" />
                     </Grid>
                 </Grid>}
             </Grid>
-
-
-
         </div>
     )
 }
